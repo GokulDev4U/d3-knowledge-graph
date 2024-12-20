@@ -8,20 +8,88 @@ import * as d3 from "d3";
 export default {
   name: "D3Graph",
   mounted() {
-    const nodes = [
-      { id: 1, label: "Node 1" },
-      { id: 2, label: "Node 2" },
-      { id: 3, label: "Node 3" },
-      { id: 4, label: "Node 4" },
-    ];
+    // const nodes = [
+    //   { id: 1, label: "Node 1" },
+    //   { id: 2, label: "Node 2" },
+    //   { id: 3, label: "Node 3" },
+    //   { id: 4, label: "Node 4" },
+    // ];
 
-    const links = [
-      { source: 1, target: 2 },
+    // const links = [
+    //   { source: 1, target: 2 },
+    //   { source: 1, target: 3 },
+    //   { source: 3, target: 4 },
+    // ];
+
+    // this.createGraph(nodes, links);
+
+     // Convert nodes object to array
+     const nodes = Object.entries({
+      0: { name: "0. Foundations" },
+      1: { name: "1. Basic ROS2" },
+      2: { name: "2. ROS Basics" },
+      3: { name: "3. Intermediate ROS2" },
+      4: { name: "4. Robotics Theory" },
+      5: { name: "5. Navigation ROS2" },
+      6: { name: "C++ Basics for robotics" },
+      7: { name: "7. Manipulation" },
+      8: { name: "8. Robot Creation" },
+      9: { name: "9. Artificial Intelligence" },
+      10: { name: "10. ROS Debugging" },
+      11: { name: "11. Course of product" },
+      12: { name: "12. Web Devel for Robots" },
+      13: { name: "13. Simulation" },
+      14: { name: "14. Enterprise" },
+      15: { name: "Advanced Modern C++ for robotics" },
+      16: { name: "Linux for robotics" },
+      17: { name: "Behavior Trees for ROS2" },
+      18: { name: "ROS2 Control" },
+      19: { name: "ROS2 Basics in 5 days (C++)" },
+      20: { name: "ROS2 Basics in 5 days (Python)" },
+      21: { name: "ROS2 Security" },
+      22: { name: "ROS2 Basics in 3 days (Rust)" },
+      23: { name: "RTAB" },
+      24: { name: "Nav2 Basics" },
+      25: { name: "Nav Advanced" },
+      26: { name: "TF in ROS2" },
+      27: { name: "URDF robot modelling ROS2" },
+      28: { name: "ROS1-ROS2 Migration" },
+      29: { name: "Python 3 for robotics" },
+      30: { name: "Gazebo Sim with ROS2" },
+      31: { name: "create a link" },
+      32: { name: "Intermediate ROS2 (Python)" },
+      33: { name: "Intermediate ROS2 (C++)" },
+    }).map(([id, data]) => ({ id: +id, label: data.name }));
+
+    const edges = [
+      { source: 0, target: 1 },
       { source: 1, target: 3 },
-      { source: 3, target: 4 },
+      { source: 1, target: 5 },
+      { source: 1, target: 27 },
+      { source: 1, target: 28 },
+      { source: 3, target: 19 },
+      { source: 3, target: 20 },
+      { source: 3, target: 32 },
+      { source: 3, target: 33 },
+      { source: 3, target: 17 },
+      { source: 3, target: 18 },
+      { source: 5, target: 22 },
+      { source: 5, target: 23 },
+      { source: 5, target: 24 },
+      { source: 5, target: 25 },
+      { source: 2, target: 6 },
+      { source: 2, target: 13 },
+      { source: 0, target: 16 },
+      { source: 1, target: 26 },
+      { source: 1, target: 29 },
+      { source: 2, target: 30 },
+      { source: 0, target: 31 },
+      { source: 4, target: 3 },
+      { source: 8, target: 30 },
+      { source: 12, target: 10 },
     ];
 
-    this.createGraph(nodes, links);
+    this.createGraph(nodes, edges);
   },
   methods: {
     createGraph(nodes, links) {
