@@ -8,21 +8,6 @@ import * as d3 from "d3";
 export default {
   name: "D3Graph",
   mounted() {
-    // const nodes = [
-    //   { id: 1, label: "Node 1" },
-    //   { id: 2, label: "Node 2" },
-    //   { id: 3, label: "Node 3" },
-    //   { id: 4, label: "Node 4" },
-    // ];
-
-    // const links = [
-    //   { source: 1, target: 2 },
-    //   { source: 1, target: 3 },
-    //   { source: 3, target: 4 },
-    // ];
-
-    // this.createGraph(nodes, links);
-
     // Convert nodes object to array
     const nodes = Object.entries({
       0: { name: "0. Foundations" },
