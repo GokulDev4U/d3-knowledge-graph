@@ -191,10 +191,36 @@ export default {
       }
 
       // Highlight connected nodes and edges
+      // function highlightConnected(nodeId) {
+      //   // Find connected links
+      //   link.attr("stroke", (d) =>
+      //     d.source.id === nodeId || d.target.id === nodeId ? "yellow" : "lightgray"
+      //   );
+
+      //   // Highlight connected nodes
+      //   node.attr("fill", (d) =>
+      //     d.id === nodeId ||
+      //       links.some(
+      //         (link) =>
+      //           (link.source.id === nodeId && link.target.id === d.id) ||
+      //           (link.target.id === nodeId && link.source.id === d.id)
+      //       )
+      //       ? "yellow"
+      //       : "lightgray"
+      //   );
+      // }
+
+      // // Reset colors
+      // function resetColors() {
+      //   link.attr("stroke", "lightgray");
+      //   node.attr("fill", "darkgray");
+      // }
+
+      // Highlight connected nodes and edges
       function highlightConnected(nodeId) {
-        // Find connected links
+        // Highlight connected links
         link.attr("stroke", (d) =>
-          d.source.id === nodeId || d.target.id === nodeId ? "yellow" : "lightgray"
+          d.source.id === nodeId || d.target.id === nodeId ? "yellow" : "#e0e0e0"
         );
 
         // Highlight connected nodes
@@ -206,15 +232,16 @@ export default {
                 (link.target.id === nodeId && link.source.id === d.id)
             )
             ? "yellow"
-            : "lightgray"
+            : "#e0e0e0"
         );
       }
 
-      // Reset colors
+      // Reset colors to default
       function resetColors() {
         link.attr("stroke", "lightgray");
         node.attr("fill", "darkgray");
       }
+
     },
   },
 };
