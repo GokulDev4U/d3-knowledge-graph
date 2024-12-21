@@ -23,8 +23,8 @@ export default {
 
     // this.createGraph(nodes, links);
 
-     // Convert nodes object to array
-     const nodes = Object.entries({
+    // Convert nodes object to array
+    const nodes = Object.entries({
       0: { name: "0. Foundations" },
       1: { name: "1. Basic ROS2" },
       2: { name: "2. ROS Basics" },
@@ -161,7 +161,17 @@ export default {
           .attr("x2", (d) => d.target.x)
           .attr("y2", (d) => d.target.y);
 
-        node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
+        // node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
+
+        node
+          .attr("cx", (d) => {
+            d.x = Math.max(10, Math.min(width - 10, d.x)); // Ensure node stays within the horizontal bounds
+            return d.x;
+          })
+          .attr("cy", (d) => {
+            d.y = Math.max(10, Math.min(height - 10, d.y)); // Ensure node stays within the vertical bounds
+            return d.y;
+          });
 
         svg
           .selectAll(".label")
@@ -205,11 +215,11 @@ export default {
         // Highlight connected nodes
         node.attr("fill", (d) =>
           d.id === nodeId ||
-          links.some(
-            (link) =>
-              (link.source.id === nodeId && link.target.id === d.id) ||
-              (link.target.id === nodeId && link.source.id === d.id)
-          )
+            links.some(
+              (link) =>
+                (link.source.id === nodeId && link.target.id === d.id) ||
+                (link.target.id === nodeId && link.source.id === d.id)
+            )
             ? "yellow"
             : "lightgray"
         );
