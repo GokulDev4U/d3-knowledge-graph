@@ -1,5 +1,5 @@
 <template>
-  <GraphVisualization />
+    <GraphVisualization />
 </template>
 
 <script>

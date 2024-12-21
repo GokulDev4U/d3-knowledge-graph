@@ -1,5 +1,5 @@
 <template>
-  <div ref="svgContainer" style="width: 100%; height: 600px;"></div>
+  <div ref="svgContainer" style="width: 100%; height: 100vh;"></div>
 </template>
 
 <script>
@@ -93,15 +93,17 @@ export default {
   },
   methods: {
     createGraph(nodes, links) {
-      const width = 800;
-      const height = 600;
+      const svgContainer = this.$refs.svgContainer;
+      const width = svgContainer.offsetWidth;
+      const height = svgContainer.offsetHeight;
 
-      // Create SVG container
       const svg = d3
-        .select(this.$refs.svgContainer)
+        .select(svgContainer)
         .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+        .attr("width", "100%")
+        .attr("height", "100%")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("preserveAspectRatio", "xMidYMid meet");
 
       // Simulation setup
       const simulation = d3
